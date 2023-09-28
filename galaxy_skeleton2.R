@@ -97,11 +97,25 @@ cat(comma_separated_values_with_names, sep = "\n", file = "processed_data.txt")
 
 # Read the file back in as a normal csv-file. The readr-package is part of
 # tidyverse, so it is already loaded.
-galaxies <- read_csv("processed_data")
+galaxies <- read_csv("processed_data.txt")
 
 
 # You should now have a nice, clean data frame with galaxies and their
 # characteristics in memory. As of March 2022 it should contain 796
 # observations.
 
+# ------------------------------------------------
+# Problem 3
+
+galaxies %>% filter(D <= 11) %>% ggplot(aes(x = a_26)) + 
+  geom_histogram() + 
+  xlab("Linear diameter of the galaxy in kpc") + 
+  ylab("Count")
+  
+# Filtered for the distance maximum 11 kpc from us, then presented it 
+# in a histogram.
+# From the histogram we can observe that we have a high count of small a26
+# values. However, this do not necessary mean that smaller objects are 
+# under-represented. It might indicate that there naturally are more smaller
+# galaxies than larger ones within the filtered distance.
 
