@@ -1,4 +1,4 @@
-# Problem 4
+# Problem 4.1
 # -------------------------------------------
 
 library(tidyverse)
@@ -34,7 +34,7 @@ edited_file <- read_csv("problem4_processed.txt")
 problem2_file <- read_csv("processed_data.txt")
 
 # Joining the two files by name
-joined_data <- left_join(edited_file, problem2_file, by = "name")
+joined_data <- inner_join(edited_file, problem2_file, by = "name")
 
 # Plotting velocity of each galaxy against their distance from us
 joined_data %>% 
@@ -47,3 +47,19 @@ joined_data %>%
 # From the plot we can observe that when the distance from us (D) increases,
 # the velocity of each galaxy also increases. From this sample data it looks
 # like Hubble's observation is true
+
+# Problem 4.2 
+# ----------------------------------------------------------
+
+# Creating a regression line
+model <- lm(cz ~ D, data = joined_data)
+
+# Extracting the slope coefficient of the model
+hubble_constant <- coef(model)[2]
+
+# Printing the value 
+hubble_constant
+
+# From the internet we observe that the hubble constant is approximately 70
+# and we get 94 in this case. There could be several reasons for this. 
+# However, the limited data set might play a big role in the difference.
