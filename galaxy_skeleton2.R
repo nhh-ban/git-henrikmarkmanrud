@@ -108,9 +108,10 @@ galaxies <- read_csv("processed_data.txt")
 # Problem 3
 
 galaxies %>% filter(D <= 11) %>% ggplot(aes(x = a_26)) + 
-  geom_histogram() + 
+  geom_histogram(bins = 50) + 
   xlab("Linear diameter of the galaxy in kpc") + 
   ylab("Count")
+  
   
 # Filtered for the distance maximum 11 kpc from us, then presented it 
 # in a histogram.
